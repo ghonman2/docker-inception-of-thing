@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p3
+  labels:
+    app: p3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: p3
+  template:
+    metadata:
+      labels:
+        app: p3
+    spec:
+      containers:
+      - name: p3
+        image: joowpark/inception-of-things:v1
+        ports:
+          - name: p3-port
+            containerPort: 3000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: p3-svc
+spec:
+  selector:
+    app: p3
+  ports:
+  - name: p3-svc-port
+    protocol: TCP
+    port: 80
+    targetPort : p3-port
