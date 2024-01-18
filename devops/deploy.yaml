@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: p3
-        image: joowpark/inception-of-things:v2
+        image: joowpark/inception-of-things:v1
         ports:
           - name: p3-port
             containerPort: 3000
